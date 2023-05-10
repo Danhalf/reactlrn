@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from "react-redux";
-import { changeCompleted } from "../features/todo/todoSlice";
+import { changeCompleted, deleteTodo } from "../features/todo/todoSlice";
 
 const TodoItem = ({id, text, completed}) => {
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const TodoItem = ({id, text, completed}) => {
             <div className={`text-sm ${completed ? 'line-through font-medium text-lime-400' : ''}`}>
                {text}
             </div>
-            <div className='text-sm px-4 py-2 flex bg-red-400 hover:bg-red-500 transition-all text-white cursor-pointer'>
+            <div onClick={() => dispatch(deleteTodo(id))} className='text-sm px-4 py-2 flex bg-red-400 hover:bg-red-500 transition-all text-white cursor-pointer'>
                 Delete
             </div>
         </div>

@@ -22,9 +22,12 @@ export const TodoSlice = createSlice({
             if (todo) {
                 todo.completed = !todo.completed;
             }
+        },
+        deleteTodo: (state, {payload}) => {
+            state.todos = state.todos.filter(({id}) => id !== payload)
         }
     }
 })
 
-export const { createTodo, changeCompleted } = TodoSlice.actions
+export const { createTodo, changeCompleted, deleteTodo } = TodoSlice.actions
 export default TodoSlice.reducer
